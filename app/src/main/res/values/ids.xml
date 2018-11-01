@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="email_lgin_text" type="id"></item>
+    <item name="cffLogo" type="id"></item>
+    <item name="pw_lgin_txt" type="id"></item>
+    <item name="loginBtn" type="id"></item>
+    <item name="emailTextView" type="id"></item>
+    <item name="tvPassword" type="id"></item>
+    <item name="no_acc_sign_up" type="id"></item>
+</resources>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="vModel" type="com.jthomann.cff_mvvm1.viewModel.LoginViewModel"/>
+        <variable name="activity" type="com.jthomann.cff_mvvm1.view.LoginActivity"/>
+        <import type="android.view.View"/>
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cff_bg_new"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/cffLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cff_logo_new"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_btn_new"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:onClick="@{() -> activity.login()}"
+        app:layout_constraintEnd_toEndOf="@+id/pw_lgin_txt"
+        app:layout_constraintStart_toStartOf="@+id/pw_lgin_txt"
+        app:layout_constraintTop_toBottomOf="@+id/pw_lgin_txt" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/email"
+        android:textColor="#01BAEF"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cffLogo" />
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/password"
+        android:textColor="#01BAEF"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/email_lgin_text"
+        app:layout_constraintTop_toBottomOf="@+id/email_lgin_text" />
+
+    <EditText
+        android:id="@+id/email_lgin_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@{vModel.email}"
+        android:afterTextChanged="@{vModel.onEmailChanged}"
+        android:onTextChanged="@{vModel.onEmailTextChanged}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/emailTextView"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/pw_lgin_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@{vModel.password}"
+        android:afterTextChanged="@{vModel.onPasswordChanged}"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/email_lgin_text"
+        app:layout_constraintStart_toStartOf="@+id/emailTextView"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/no_acc_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/sign_up"
+        android:textColor="@color/colorOffWhite"
+        android:textSize="17sp"
+        android:onClick="@{() -> activity.startSignUpActivity()}"
+        app:layout_constraintStart_toStartOf="@+id/loginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    <TextView
+        android:id="@+id/tvForgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_pass"
+        android:textColor="@color/colorOffWhite"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/no_acc_sign_up"
+        app:layout_constraintTop_toTopOf="@+id/no_acc_sign_up" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

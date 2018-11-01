@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Cff_mvvm1</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="dontHaveAcc">Don\'t have an account? Sign up</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="confPass">Confirm Password</string>
+    <string name="haveAccSignIn">Have an account? Sign in</string>
+    <string name="action_search">Search</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_settings">Account Settings</string>
+    <string name="username_setup">Username</string>
+    <string name="reset_pass">Reset Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_pass">Forgot Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="choose_cat">Choose Category</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="dob_hint">MM/DD/YYYY</string>
+    <string name="os_string_res">Operating System</string>
+    <string name="country">Country Of Origin</string>
+    <string name="about_me">About Me</string>
+    <string name="write_something">Write something about yourself...</string>
+    <string name="dev_acc_setup">Developer Account Setup</string>
+    <string name="language">Choose your programming languages</string>
+    <string name="Languages">Languages</string>
+    <string name="languages_saved">Preferences Saved</string>
+    <string name="program_lang">Your Programming Languages</string>
+
+    <string-array name="programming_languages">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>C++</item>
+        <item>C#</item>
+        <item>C</item>
+        <item>PHP</item>
+        <item>JavaScript</item>
+        <item>Python</item>
+        <item>Swift</item>
+        <item>SQL</item>
+        <item>Ruby</item>
+        <item>.NET</item>
+        <item>Objective-C</item>
+        <item>Go</item>
+    </string-array>
+</resources>
