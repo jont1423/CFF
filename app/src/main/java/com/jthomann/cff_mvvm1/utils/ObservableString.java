@@ -52,7 +52,7 @@ public class ObservableString extends BaseObservable implements Serializable {
      */
     public void set(String value) {
         if (value == null && mValue == null) return;
-        if ((value == null && mValue != null) || !value.equals(mValue)) {
+        if (value == null || !value.equals(mValue)) {
             mValue = value;
             notifyChange();
         }

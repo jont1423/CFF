@@ -7,6 +7,10 @@
     <data>
         <variable name="vModel" type="com.jthomann.cff_mvvm1.viewModel.SignUpViewModel"/>
         <variable name="activity" type="com.jthomann.cff_mvvm1.view.SignUpActivity"/>
+
+        <variable
+            name="userModel"
+            type="com.jthomann.cff_mvvm1.model.User" />
         <import type="android.view.View"/>
     </data>
 
@@ -25,6 +29,7 @@
         android:background="@drawable/sign_up_btn_new"
         android:textAlignment="center"
         android:textColor="@android:color/white"
+        android:onClick="@{() -> activity.signUp()}"
         app:layout_constraintEnd_toEndOf="@+id/signUpConfPass"
         app:layout_constraintStart_toStartOf="@+id/signUpConfPass"
         app:layout_constraintTop_toBottomOf="@+id/signUpConfPass" />
@@ -36,6 +41,7 @@
         android:layout_marginEnd="33dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:text="@={userModel.email}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvEmail"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail"
@@ -117,6 +123,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:labelFor="@id/signUpPassword"
+        android:text="@={userModel.password}"
         app:layout_constraintEnd_toEndOf="@+id/signUpEmail"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvPassword"
@@ -131,6 +138,7 @@
         android:ems="10"
         android:labelFor="@id/signUpConfPass"
         android:inputType="textPassword"
+        android:text="@={userModel.confPassword}"
         app:layout_constraintEnd_toEndOf="@+id/signUpPassword"
         app:layout_constraintStart_toStartOf="@+id/tvConfPassword"
         app:layout_constraintTop_toBottomOf="@+id/tvConfPassword"

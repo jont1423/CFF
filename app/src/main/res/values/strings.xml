@@ -45,4 +45,10 @@
         <item>Objective-C</item>
         <item>Go</item>
     </string-array>
+
+    <string-array name="operating_systems">
+        <item>MacOS</item>
+        <item>Windows</item>
+        <item>Linux</item>
+    </string-array>
 </resources>

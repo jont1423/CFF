@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements Observer<String>
         loginViewModel = new LoginViewModel();
         loginBinding.setVModel(loginViewModel);
         loginBinding.setActivity(this);
+        loginBinding.executePendingBindings();
 
     }
 
