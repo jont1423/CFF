@@ -53,11 +53,13 @@ public class User extends BaseObservable {
         notifyPropertyChanged(BR.confPassword);
     }
 
+    @Bindable
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+        notifyPropertyChanged(BR.username);
     }
 }
