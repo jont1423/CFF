@@ -9,7 +9,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jthomann.cff_mvvm1.interfaces.Observer;
 import com.jthomann.cff_mvvm1.model.SpinnerModel;
-import com.jthomann.cff_mvvm1.model.User;
 import com.jthomann.cff_mvvm1.utils.MyUtils;
 
 import java.util.ArrayList;
@@ -25,21 +24,16 @@ public class DevAccSetupViewModel extends BaseObservable {
     public String[] languages;
     private ArrayList<Observer> observers;
     private SpinnerModel spinnerModel;
-    private User userModel;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
     private String currentUserID;
 
     final String accountType = "developer";
 
-//    private String username = "";
-
     public DevAccSetupViewModel(String[] operatingSystems, String[] languages, SpinnerModel spinnerModel) {
         this.operatingSystems = operatingSystems;
         this.spinnerModel = spinnerModel;
         this.languages = languages;
-//        userModel = new User();
-//        username = userModel.getUsername();
         observers = new ArrayList<>();
     }
 
@@ -55,12 +49,6 @@ public class DevAccSetupViewModel extends BaseObservable {
 
         notifyObservers(MyUtils.SHOW_TOAST, spinnerModel.getCountry());
     }
-
-//    public void onSelectLanguageItem(AdapterView<?> parent, View view, int pos, long id) {
-//        spinnerModel.setSelectedLang(String.valueOf(parent.getSelectedItem()));
-//
-//        notifyObservers(MyUtils.SHOW_TOAST, spinnerModel.getSelectedLang());
-//    }
 
     public void saveUserInformation(String username) {
         mAuth = FirebaseAuth.getInstance();
@@ -97,13 +85,6 @@ public class DevAccSetupViewModel extends BaseObservable {
             });
         }
     }
-
-//    public void onUsernameChanged(Editable e) {
-//        username.setSilently(e.toString());
-//    }
-//      public void onUsernameTextChanged(CharSequence s, int start, int before, int count){
-//           Log.d("Test", "user text changed now: " + s);
-//    }
 
     public void addObserver(Observer client) {
         if (!observers.contains(client)) {

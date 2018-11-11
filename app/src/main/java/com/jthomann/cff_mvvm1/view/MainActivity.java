@@ -2,7 +2,6 @@ package com.jthomann.cff_mvvm1.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -14,31 +13,54 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jthomann.cff_mvvm1.R;
-
-import java.util.Objects;
+import com.jthomann.cff_mvvm1.databinding.ActivityMainBinding;
+import com.jthomann.cff_mvvm1.viewModel.MainViewModel;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference usersRef;
+    private MainViewModel mainViewModel;
+    private ActivityMainBinding mainBinding;
+    private ActionBarDrawerToggle toggle;
 
+    //    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mainViewModel = new MainViewModel();
+        mainBinding.setVModel(mainViewModel);
+        mainBinding.setActivity(this);
+        mainBinding.executePendingBindings();
+
+        setSupportActionBar(mainBinding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_view_list);
 
         // create Firebase instances and references
         mAuth = FirebaseAuth.getInstance();
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        Toolbar mainToolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(mainToolbar);
+    }
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Coding Friend Finder");
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mainBinding.drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // if user not logged in, sends to LoginActivity
@@ -94,34 +116,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(sentToChoose);
         finish();
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-
-        return true;
-    }
-
-    // onOptionsItemSelected for MenuItem, either logs out user or sends them to their settings screen
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.action_logout:
-                logout();
-                return true;
-
-            case R.id.action_acc_settings:
-//                sendToAccSettings();
-                return true;
-
-            default:
-                return false;
-
-        }
     }
 
     // method when called logs current user out

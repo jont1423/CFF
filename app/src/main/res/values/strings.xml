@@ -9,6 +9,8 @@
     <string name="confPass">Confirm Password</string>
     <string name="haveAccSignIn">Have an account? Sign in</string>
     <string name="action_search">Search</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="action_logout">Logout</string>
     <string name="action_settings">Account Settings</string>
     <string name="username_setup">Username</string>
@@ -28,6 +30,7 @@
     <string name="Languages">Languages</string>
     <string name="languages_saved">Preferences Saved</string>
     <string name="program_lang">Your Programming Languages</string>
+    <string name="my_account">My Account</string>
 
     <string-array name="programming_languages">
         <item>Java</item>
