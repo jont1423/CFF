@@ -54,4 +54,5 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation 'androidx.legacy:legacy-support-core-ui:1.0.0-rc01'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

@@ -21,7 +21,6 @@ public class SpinnerModel extends BaseObservable
 {
 
     private String selectedOS;
-    private String selectedLang;
     private String[] countries;
     private int countryPos;
     private String country;
@@ -74,10 +73,6 @@ public class SpinnerModel extends BaseObservable
         setCountry(countries[countryPos]);
     }
 
-    public int getCountryPos(Spinner spinner) {
-        return spinner.getSelectedItemPosition();
-    }
-
     @Bindable
     public String getCountry() {
         return country;
@@ -95,14 +90,4 @@ public class SpinnerModel extends BaseObservable
     public void setSelectedOS(String selectedOS) {
         this.selectedOS = selectedOS;
     }
-
-    public String getSelectedLang() {
-        return selectedLang;
-    }
-
-    public void setSelectedLang(String selectedLang) {
-        this.selectedLang = selectedLang;
-    }
-
-
 }

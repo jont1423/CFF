@@ -7,26 +7,22 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.jthomann.cff_mvvm1.R;
 import com.jthomann.cff_mvvm1.databinding.ActivityMainBinding;
+import com.jthomann.cff_mvvm1.interfaces.Observer;
+import com.jthomann.cff_mvvm1.utils.MyUtils;
 import com.jthomann.cff_mvvm1.viewModel.MainViewModel;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Observer<String>
+{
 
     private FirebaseAuth mAuth;
-    private DatabaseReference usersRef;
     private MainViewModel mainViewModel;
     private ActivityMainBinding mainBinding;
     private ActionBarDrawerToggle toggle;
@@ -49,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         // create Firebase instances and references
         mAuth = FirebaseAuth.getInstance();
-        usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
-
     }
 
     @Override
@@ -74,57 +68,39 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser == null){
             sendToLogin();
         } else {
-            checkUserExistence();
+            mainViewModel.checkUserExistence();
         }
     }
 
     // checkUserExistence method checks the database to see if the user has setup their account
     // if no user_id is found, then the user is sent to the ChooseTypeActivity to begin their
     // account setup
-    private void checkUserExistence() {
-
-        final String current_user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        usersRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.hasChild(current_user_id)) {
-
-                    SendUserToChooseActivity();
-                    Toast.makeText(MainActivity.this, "Please setup your account before using the app.",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "User exists", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
-
-            }
-        });
-
-
+    @Override
+    public void onObserve(int event, String eventMessage) {
+        if (event == MyUtils.SHOW_TOAST) {
+            Toast.makeText(this, eventMessage, Toast.LENGTH_SHORT).show();
+        } else if (event == MyUtils.OPEN_ACTIVITY) {
+            SendUserToChooseActivity();
+        }
     }
 
-    // Method that when called, sends user to ChooseActivity
-    private void SendUserToChooseActivity() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mainViewModel.addObserver(this);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mainViewModel.removeObserver(this);
+    }
 
+    private void SendUserToChooseActivity() {
         Intent sentToChoose = new Intent(this, ChooseTypeActivity.class);
         startActivity(sentToChoose);
         finish();
-
     }
 
-    // method when called logs current user out
-    private void logout() {
-        mAuth.signOut();
-        sendToLogin();
-    }
-
-    // method when called sends user to login
     private void sendToLogin() {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

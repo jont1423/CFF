@@ -31,6 +31,9 @@
     <string name="languages_saved">Preferences Saved</string>
     <string name="program_lang">Your Programming Languages</string>
     <string name="my_account">My Account</string>
+    <string name="project_name">Project Name</string>
+    <string name="looking_for">What are you looking for?</string>
+    <string name="np_languages">Programming Languages (if applicable)</string>
 
     <string-array name="programming_languages">
         <item>Java</item>
