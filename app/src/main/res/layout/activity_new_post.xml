@@ -14,6 +14,10 @@
             name="activity"
             type="com.jthomann.cff_mvvm1.view.NewPostActivity" />
 
+        <variable
+            name="model"
+            type="com.jthomann.cff_mvvm1.model.NewPostModel" />
+
         <import type="android.view.View" />
     </data>
 
@@ -57,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
+            android:text="@={model.projectName}"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="center"
@@ -87,26 +92,90 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
+            android:text="@={model.lookingForDesc}"
             android:background="@color/white"
+            android:elevation="5dp"
             android:ems="10"
+            android:gravity="top"
             android:inputType="textMultiLine"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/looking_for_tv" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/colorAccent"
+            android:elevation="7dp"
+            android:text="@string/Post"
+            android:onClick="@{() -> vModel.saveNewPost()}"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/pick_lang_for_project_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="multiChoiceDialog"
+            android:background="@drawable/spinner_bg"
+            android:text="@string/language"
+            app:layout_constraintEnd_toEndOf="@+id/looking_for_et"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/looking_for_et"
+            app:layout_constraintTop_toBottomOf="@+id/looking_for_et" />
+
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/describe_project"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/pick_lang_for_project_btn"
+            app:layout_constraintStart_toStartOf="@+id/pick_lang_for_project_btn"
+            app:layout_constraintTop_toBottomOf="@+id/pick_lang_for_project_btn" />
+
+        <EditText
+            android:id="@+id/describe_project_et"
+            android:layout_width="0dp"
+            android:layout_height="165dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorOffWhite"
+            android:elevation="5dp"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:text="@={model.projectDesc}"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="@+id/looking_for_et"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/looking_for_et"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/np_languages"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
+            android:progressTint="@color/colorAccent"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/looking_for_et" />
+            app:layout_constraintTop_toTopOf="@+id/project_name_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

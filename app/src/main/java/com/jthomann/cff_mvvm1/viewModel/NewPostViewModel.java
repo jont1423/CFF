@@ -1,15 +1,24 @@
 package com.jthomann.cff_mvvm1.viewModel;
 
 import com.jthomann.cff_mvvm1.interfaces.Observer;
+import com.jthomann.cff_mvvm1.model.NewPostModel;
+import com.jthomann.cff_mvvm1.repository.GroupFinderRepo;
 
 import java.util.ArrayList;
 
 public class NewPostViewModel {
 
     private ArrayList<Observer> observers;
+    private GroupFinderRepo groupFinderRepo;
 
-    public NewPostViewModel(){
+    public NewPostViewModel(NewPostModel newPostModel){
         observers = new ArrayList<>();
+
+        groupFinderRepo = new GroupFinderRepo(newPostModel);
+    }
+
+    public void saveNewPost(){
+        groupFinderRepo.uploadNewPost();
     }
 
     public void addObserver(Observer client) {

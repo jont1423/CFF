@@ -26,7 +26,8 @@
         <activity android:name=".view.SignUpActivity" />
         <activity android:name=".view.ChooseTypeActivity" />
         <activity android:name=".view.DevAccSetupActivity" />
-        <activity android:name=".view.NewPostActivity"></activity>
+        <activity android:name=".view.NewPostActivity" />
+        <activity android:name=".view.GroupFinder"></activity>
     </application>
 
 </manifest>

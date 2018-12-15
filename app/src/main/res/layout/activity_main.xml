@@ -31,7 +31,7 @@
 
             <Button
                 android:id="@+id/group_finder_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="393dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/group_finder_ic"
@@ -54,6 +54,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_conversion_absoluteHeight="56dp"
                 tools:layout_conversion_absoluteWidth="206dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{() -> activity.sendToNewPostActivity()}"
+                android:clickable="true"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@color/ColorPrimaryDark"
+                android:focusable="true" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

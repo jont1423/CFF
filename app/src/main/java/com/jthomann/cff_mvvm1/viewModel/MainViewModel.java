@@ -44,8 +44,8 @@ public class MainViewModel extends BaseObservable {
 //                    Toast.makeText(MainActivity.this, "Please setup your account before using the app.",
 //                            Toast.LENGTH_LONG).show();
                 } else {
-                    notifyObservers(MyUtils.SHOW_TOAST, "User exists");
-//                    Toast.makeText(MainActivity.this, "User exists", Toast.LENGTH_LONG).show();
+                    notifyObservers(MyUtils.SHOW_TOAST, "UserRepo exists");
+//                    Toast.makeText(MainActivity.this, "UserRepo exists", Toast.LENGTH_LONG).show();
                 }
             }
 

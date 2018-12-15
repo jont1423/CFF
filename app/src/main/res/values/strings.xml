@@ -34,6 +34,8 @@
     <string name="project_name">Project Name</string>
     <string name="looking_for">What are you looking for?</string>
     <string name="np_languages">Programming Languages (if applicable)</string>
+    <string name="Post">Post</string>
+    <string name="describe_project">Please describe your project below</string>
 
     <string-array name="programming_languages">
         <item>Java</item>

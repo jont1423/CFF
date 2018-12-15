@@ -9,8 +9,11 @@ import androidx.databinding.Bindable;
 
 public class NewPostModel extends BaseObservable {
 
-    private ArrayList<String> selectedStrings = new ArrayList<>();
+    private String projectName;
+    private String projectDesc;
+    private String lookingForDesc;
 
+    private ArrayList<String> selectedStrings = new ArrayList<>();
 
     public void setSelectedStrings(ArrayList<String> selectedStrings) {
         this.selectedStrings = selectedStrings;
@@ -21,5 +24,35 @@ public class NewPostModel extends BaseObservable {
     public ArrayList<String> getSelectedStrings() {
 
         return selectedStrings;
+    }
+
+    @Bindable
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+        notifyPropertyChanged(BR.projectName);
+    }
+
+    @Bindable
+    public String getProjectDesc() {
+        return projectDesc;
+    }
+
+    public void setProjectDesc(String projectDesc) {
+        this.projectDesc = projectDesc;
+        notifyPropertyChanged(BR.projectDesc);
+    }
+
+    @Bindable
+    public String getLookingForDesc() {
+        return lookingForDesc;
+    }
+
+    public void setLookingForDesc(String lookingForDesc) {
+        this.lookingForDesc = lookingForDesc;
+        notifyPropertyChanged(BR.lookingForDesc);
     }
 }

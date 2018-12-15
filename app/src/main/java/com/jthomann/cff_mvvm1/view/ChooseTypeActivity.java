@@ -22,8 +22,6 @@ public class ChooseTypeActivity extends AppCompatActivity {
 
         chooseTypeBinding.setActivity(this);
         chooseTypeBinding.executePendingBindings();
-
-//        if (chooseTypeBinding.devChooseBtn)
     }
 
     public void sendToDevSetup() {

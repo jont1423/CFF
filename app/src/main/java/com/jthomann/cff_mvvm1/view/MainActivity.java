@@ -107,4 +107,9 @@ public class MainActivity extends AppCompatActivity implements Observer<String>
         startActivity(intent);
         finish();
     }
+
+    public void sendToNewPostActivity(){
+        Intent intent = new Intent(MainActivity.this, NewPostActivity.class);
+        startActivity(intent);
+    }
 }

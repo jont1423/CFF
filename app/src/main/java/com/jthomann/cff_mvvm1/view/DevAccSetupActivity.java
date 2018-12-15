@@ -41,6 +41,7 @@ public class DevAccSetupActivity extends AppCompatActivity implements Observer<S
                 getResources().getStringArray(R.array.operating_systems),
                 getResources().getStringArray(R.array.programming_languages),
                 spinnerModel);
+
         devAccSetupBinding.setActivity(this);
         devAccSetupBinding.setVModel(viewModel);
         devAccSetupBinding.setModel(spinnerModel);
